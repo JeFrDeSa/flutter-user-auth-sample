@@ -1,1 +1,3 @@
-# flutter_user_auth_sample
+# u_auth
+
+User authentication code sample.
