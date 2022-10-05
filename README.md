@@ -1,6 +1,8 @@
 # user_auth_sample
 
-A simple user authentication code sample for Flutter.
+A simple user authentication code sample for Flutter, using
+* Architecture: Clean Architecture
+* State Management: BLoC
 
 ## App use
 
