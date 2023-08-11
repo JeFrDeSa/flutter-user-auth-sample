@@ -59,7 +59,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
   # Mock Library --- Mock library for Dart inspired by Mockito.
-  mockito: 5.2.0
+  mockito: 5.4.2
   # The build_runner package provides general-purpose commands for generating files.
   build_runner: ^2.1.0
 
