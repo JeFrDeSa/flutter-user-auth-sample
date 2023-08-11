@@ -61,11 +61,10 @@ void main() {
       verifyOnlySharedPreferencesGetStringCalled(getDefaultModelIdentifier());
     });
 
-    test('should throw a no data entry found exception when the requested identifier could not be found.', () async {
+    test('should throw a no data entry found exception when the requested identifier could not be read.', () async {
       // (A)rrange -> all necessary preconditions and inputs.
       bool exceptionOccurred = false;
-      //ToDo: Fix CastError issue - Is deprecated but used by SharedPreferences
-      when(core_utilities.sharedPreferences.getString(getDefaultModelIdentifier())).thenThrow(CastError());
+      when(core_utilities.sharedPreferences.getString(getDefaultModelIdentifier())).thenThrow(TypeError());
 
       // (A)ct -> on the object or method under test.
       try {

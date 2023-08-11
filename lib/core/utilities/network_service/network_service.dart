@@ -14,14 +14,10 @@ class NetworkService implements NetworkServiceContract {
 
   @override
   Future<bool> getConnectionStatus() async {
-    bool isConnected = false;
     try {
-      isConnected = await internetConnectionChecker.hasConnection;
+      return await internetConnectionChecker.hasConnection;
     } on Exception {
       return false;
     }
-    // ToDo: Enable internet connection check as soon as the cache policy and the [DatabaseStorage] are implemented
-    // return isConnected;
-    return false;
   }
 }

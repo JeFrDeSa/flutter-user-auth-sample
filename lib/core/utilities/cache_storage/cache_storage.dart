@@ -20,7 +20,7 @@ class CacheStorage implements CacheStorageContract {
   Future<UserProfileModel> readAuthData({required String identifier}) async {
     try {
       return UserProfileModel.fromJson(jsonDecode(sharedPreferences.getString(identifier)!));
-    } on CastError {
+    } on TypeError {
       throw const DataEntryNotFoundException();
     } catch (ex) {
       throw const CacheStorageReadException();
