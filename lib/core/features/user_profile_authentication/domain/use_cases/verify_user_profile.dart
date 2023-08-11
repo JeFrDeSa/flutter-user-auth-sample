@@ -4,6 +4,7 @@ import 'package:u_auth/core/features/user_profile_authentication/domain/entities
 import 'package:u_auth/core/features/user_profile_authentication/domain/repository_contract/user_profile_repository_contract.dart';
 import 'package:u_auth/core/utilities/use_cases_template.dart';
 import 'package:dartz/dartz.dart';
+import 'package:u_auth/core/utilities/util.dart' as util;
 
 /// Verifies whether the given login credentials are valid.
 /// {@category Use Case}
@@ -24,15 +25,10 @@ class VerifyUserProfile extends UseCase<UserProfile, Map<String, String>> {
         return Left(failure);
       },
       (userProfile) {
-        String passwordHash = _hashPassword(password: loginCredentials['password']!);
+        String passwordHash = util.hashPassword(password: loginCredentials['password']!);
         return _verifyPassword(passwordHash: passwordHash, userProfile: userProfile);
       },
     );
-  }
-
-  //ToDo: Move this into core utilities and refactor it for Pbkdf2 class
-  String _hashPassword({required String password}) {
-    return "${password}Hash";
   }
 
   /// Returns the user profile of the given login credentials if the verification was successful or a verification failure.

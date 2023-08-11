@@ -2,6 +2,7 @@ import 'package:u_auth/core/errors/failures/failures.dart';
 import 'package:u_auth/core/features/user_profile_authentication/domain/entities/user_profile.dart';
 import 'package:u_auth/core/features/user_profile_authentication/domain/repository_contract/user_profile_repository_contract.dart';
 import 'package:u_auth/core/utilities/use_cases_template.dart';
+import 'package:u_auth/core/utilities/util.dart' as util;
 import 'package:dartz/dartz.dart';
 
 /// Register a new [UserProfile] based on the given user credentials.
@@ -16,15 +17,10 @@ class RegisterUserProfile extends UseCase<UserProfile, Map<String, String>> {
   /// Stores the given user credentials into the data storage.
   @override
   Future<Either<MyFailures, UserProfile>> call(Map<String, String> userCredentials) async {
-    String passwordHash = _hashPassword(password: userCredentials['password']!);
+    String passwordHash = util.hashPassword(password: userCredentials['password']!);
     return await userProfileRepositoryContract.storeAuthData(
       identifier: userCredentials['identifier']!,
       passwordHash: passwordHash,
     );
-  }
-
-  //ToDo: Move this into core utilities and refactor it for Pbkdf2 class
-  String _hashPassword({required String password}) {
-    return "${password}Hash";
   }
 }
