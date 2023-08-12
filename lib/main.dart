@@ -22,7 +22,7 @@ void main() async {
   runApp(const AppInstance());
 }
 
-/// Defines the application instance.
+/// Defines the application instance. Git test
 ///
 /// Returns a [MaterialApp] widget as root.
 /// {@category Widgets}
